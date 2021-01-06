@@ -5,6 +5,11 @@ if (!navigator.bluetooth) {
 var first = new Uint8Array(18);
 var second = new Uint8Array(18);
 
+var i;
+for (i = 0; i < first.length; i++) {
+  first[i] = i+10;
+}
+
 const MY_BLUETOOTH_NAME = 'Arduino';
 const SEND_SERVICE = '19B10000-E8F2-537E-4F6C-D104768A1214';
 const SEND_SERVICE_CHARACTERISTIC = '19B10001-E8F2-537E-4F6C-D104768A1214';
