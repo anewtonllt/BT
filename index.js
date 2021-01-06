@@ -2,6 +2,9 @@ if (!navigator.bluetooth) {
   alert('Sorry, your browser doesn\'t support Bluetooth API');
 }
 
+var first = new Uint8Array(18);
+var second = new Uint8Array(18);
+
 const MY_BLUETOOTH_NAME = 'Arduino';
 const SEND_SERVICE = '19B10000-E8F2-537E-4F6C-D104768A1214';
 const SEND_SERVICE_CHARACTERISTIC = '19B10001-E8F2-537E-4F6C-D104768A1214';
@@ -54,7 +57,7 @@ function toggleLightButtonClickHandler(event) {
   const code = Number(event.target.dataset.code);
 
   if (code === 1) {
-    toggleLigthCharacteristic.writeValue(Uint8Array.of(code));
+    toggleLigthCharacteristic.writeValue(first);
 
     return;
   }
