@@ -3,16 +3,11 @@ if (!navigator.bluetooth) {
 }
 
 var firstP = new Uint8Array(9);
-var second = new Uint8Array(9);
+var off = new Uint8Array(9);
 
 var i;
-for (i = 0; i < firstP.length; i++) {
-  firstP[i] = i*20;
-}
-
-var i;
-for (i = 0; i < firstP.length; i++) {
-  second[i] = 0;
+for (i = 0; i < off.length; i++) {
+  off[i] = 0;
 }
 
 const MY_BLUETOOTH_NAME = 'LED';
@@ -60,7 +55,7 @@ function connectButtonPointerUpHandler() {
 }
 
 function lightOffButtonClickHandler() {
-  return toggleLigthCharacteristic.writeValue(Uint8Array.of(0));
+  return toggleLigthCharacteristic.writeValue(off);
 }
 
 function toggleLightButtonClickHandler(event) {
@@ -70,16 +65,16 @@ function toggleLightButtonClickHandler(event) {
     toggleLigthCharacteristic.writeValue(firstP);
     return;
   }
-
   if (code === 2) {
-    toggleLigthCharacteristic.writeValue(second);
+    toggleLigthCharacteristic.writeValue(off);
     return;
   }
   toggleLigthCharacteristic.readValue()
-    .then(currentCode => {
-      const convertedCode = currentCode.getUint8(0);
-
-      toggleLigthCharacteristic.writeValue(Uint8Array.of(convertedCode === code ? 0 : code));
+    var i;
+    for (i = 0; i < firstP.length; i++) {
+      firstP[i] = code;
+    }
+      toggleLigthCharacteristic.writeValue(firstP);
     });
 }
 
