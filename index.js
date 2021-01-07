@@ -73,12 +73,11 @@ function toggleLightButtonClickHandler(event) {
     toggleLigthCharacteristic.writeValue(off);
     return;
   }
-  toggleLigthCharacteristic.readValue()
-    var i;
-    for (i = 0; i < firstP.length; i++) {
-      firstP[i] = code;
-    }
-      toggleLigthCharacteristic.writeValue(firstP);
+  var i;
+  for (i = 0; i < firstP.length; i++) {
+    firstP[i] = code;
+  }
+  toggleLigthCharacteristic.writeValue(firstP);
 }
 
 function toggleButtonsVisible() {
