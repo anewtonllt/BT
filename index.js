@@ -79,7 +79,6 @@ function toggleLightButtonClickHandler(event) {
       firstP[i] = code;
     }
       toggleLigthCharacteristic.writeValue(firstP);
-    });
 }
 
 function toggleButtonsVisible() {
