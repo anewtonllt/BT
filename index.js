@@ -64,7 +64,7 @@ function toggleLightButtonClickHandler(event) {
   if (code === 1) {
     let encoder = new TextEncoder('utf-8');
     let sendMsg = encoder.encode("hello");
-    toggleLigthCharacteristic.writeValue(sendMsg);
+    toggleLigthCharacteristic.writeValue(firstP);
 
     return;
   }
