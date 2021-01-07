@@ -2,12 +2,17 @@ if (!navigator.bluetooth) {
   alert('Sorry, your browser doesn\'t support Bluetooth API');
 }
 
-var firstP = new Uint8Array(18);
-var second = new Uint8Array(18);
+var firstP = new Uint8Array(9);
+var second = new Uint8Array(9);
 
 var i;
 for (i = 0; i < firstP.length; i++) {
-  firstP[i] = i+10;
+  firstP[i] = i*20;
+}
+
+var i;
+for (i = 0; i < firstP.length; i++) {
+  second[i] = 0;
 }
 
 const MY_BLUETOOTH_NAME = 'LED';
@@ -62,13 +67,14 @@ function toggleLightButtonClickHandler(event) {
   const code = Number(event.target.dataset.code);
 
   if (code === 1) {
-    let encoder = new TextEncoder('utf-8');
-    let sendMsg = encoder.encode("hello");
     toggleLigthCharacteristic.writeValue(firstP);
-
     return;
   }
 
+  if (code === 2) {
+    toggleLigthCharacteristic.writeValue(second);
+    return;
+  }
   toggleLigthCharacteristic.readValue()
     .then(currentCode => {
       const convertedCode = currentCode.getUint8(0);
