@@ -6,6 +6,10 @@ var firstP = new Uint8Array(9);
 var off = new Uint8Array(9);
 
 var i;
+for (i = 0; i < firstP.length; i++) {
+  firstP[i] = i*20;
+}
+var i;
 for (i = 0; i < off.length; i++) {
   off[i] = 0;
 }
